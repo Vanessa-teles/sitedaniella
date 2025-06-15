@@ -7,69 +7,80 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet>
 </head>
 <body>
+  <div class="corner-decoration top-left"></div>
+  <div class="corner-decoration top-right"></div>
+  <div class="corner-decoration bottom-left"></div>
+  <div class="corner-decoration bottom-right"></div>
+  
   <div class="container">
     <header class="main-header">
       <h1 class="title">Nossa Jornada</h1>
       <p class="subtitle">Um amor que começou escondido e se tornou nossa maior verdade</p>
+      <div class="header-heart"></div>
     </header>
     
-    <audio controls class="audio-player" loop>
+    <audio id="loveSong" class="audio-player" autoplay loop>
       <source src="audio/casula.mp3" type="audio/mpeg" />
       Seu navegador não suporta áudio.
     </audio>
     
     <section class="story-section">
-      <div class="story-card fade-in">
-        <div class="story-text">
+      <!-- História 1 -->
+      <div class="story-card">
+        <div class="story-text animate-text">
           <h2>O Primeiro Olhar</h2>
           <p>No trabalho, entre tarefas e correria, meus olhos encontraram os seus. Foi instantâneo - uma conexão que não entendi na hora. Você era essa mulher incrível, mais experiente, que me deixou completamente encantada.</p>
         </div>
-        <div class="story-media">
+        <div class="story-media animate-media">
           <img src="images/foto1.jpg" alt="Nosso começo" class="zoom-on-hover">
         </div>
       </div>
       
-      <div class="story-card fade-in reverse">
-        <div class="story-text">
+      <!-- História 2 -->
+      <div class="story-card reverse">
+        <div class="story-text animate-text">
           <h2>Resistência e Atração</h2>
           <p>Eu insistia que não queria nada sério, tentando convencer a mim mesma. Mas você, teimosa e determinada, foi pacientemente conquistando cada pedacinho do meu coração. Cada gesto, cada cuidado seu foi me envolvendo numa rede de sentimentos que não consegui evitar.</p>
         </div>
-        <div class="story-media">
+        <div class="story-media animate-media">
           <img src="images/foto2.jpg" alt="Momentos especiais" class="zoom-on-hover">
         </div>
       </div>
       
-      <div class="story-card fade-in">
-        <div class="story-text">
+      <!-- História 3 -->
+      <div class="story-card">
+        <div class="story-text animate-text">
           <h2>O Amor Escondido</h2>
           <p>Nosso amor começou às escondidas, com olhares discretos no trabalho e encontros cheios de emoção. Eu tentava te afastar, duvidando que poderia dar certo, mas você sempre soube que valia a pena. E como valeu!</p>
         </div>
-        <div class="story-media">
+        <div class="story-media animate-media">
           <video controls class="story-video" poster="images/poster1.jpg">
             <source src="videos/video1.mp4" type="video/mp4">
           </video>
         </div>
       </div>
       
-      <div class="story-card fade-in reverse">
-        <div class="story-text">
+      <!-- História 4 -->
+      <div class="story-card reverse">
+        <div class="story-text animate-text">
           <h2>A Rendição</h2>
           <p>Quando finalmente me rendi ao que sentia, descobri o amor mais puro e verdadeiro. Você me mostrou que o coração não escolhe hora nem idade, e que quando é pra ser, a vida sempre acha um jeito.</p>
         </div>
-        <div class="story-media">
+        <div class="story-media animate-media">
           <img src="images/foto3.jpg" alt="Felizes juntas" class="zoom-on-hover">
         </div>
       </div>
       
-      <div class="story-card fade-in">
-        <div class="story-text">
+      <!-- História 5 -->
+      <div class="story-card">
+        <div class="story-text animate-text">
           <h2>Nossa Realização</h2>
           <p>E aqui estamos, construindo nosso amor a cada dia. Você é meu porto seguro, minha alegria, meu maior presente. Como eu teria perdido se tivesse insistido em te afastar... Que sorte a minha ter você insistido tanto!</p>
         </div>
-        <div class="story-media">
+        <div class="story-media animate-media">
           <video controls class="story-video" poster="images/poster2.jpg">
             <source src="videos/video2.mp4" type="video/mp4">
           </video>
@@ -78,44 +89,57 @@
     </section>
     
     <section class="gallery-section">
-      <h2 class="section-title">Nossos Momentos</h2>
+      <h2 class="section-title animate-title">Nossos Momentos</h2>
       <div class="photo-grid">
-        <img src="images/foto4.jpg" alt="Momentos 1" class="gallery-photo pop-on-hover">
-        <img src="images/foto5.jpg" alt="Momentos 2" class="gallery-photo pop-on-hover">
-        <img src="images/foto6.jpg" alt="Momentos 3" class="gallery-photo pop-on-hover">
-        <img src="images/foto7.jpg" alt="Momentos 4" class="gallery-photo pop-on-hover">
-        <img src="images/foto8.jpg" alt="Momentos 5" class="gallery-photo pop-on-hover">
-        <img src="images/foto9.jpg" alt="Momentos 6" class="gallery-photo pop-on-hover">
-        <img src="images/foto10.jpg" alt="Momentos 7" class="gallery-photo pop-on-hover">
-        <img src="images/foto11.jpg" alt="Momentos 8" class="gallery-photo pop-on-hover">
-        <img src="images/foto12.jpg" alt="Momentos 9" class="gallery-photo pop-on-hover">
-        <img src="images/foto13.jpg" alt="Momentos 10" class="gallery-photo pop-on-hover">
-        <img src="images/foto14.jpg" alt="Momentos 11" class="gallery-photo pop-on-hover">
-        <img src="images/foto15.jpg" alt="Momentos 12" class="gallery-photo pop-on-hover">
-        <img src="images/foto16.jpg" alt="Momentos 13" class="gallery-photo pop-on-hover">
+        <!-- Fotos 1-8 -->
+        <div class="photo-item animate-photo"><img src="images/foto4.jpg" alt="Momentos 1" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto5.jpg" alt="Momentos 2" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto6.jpg" alt="Momentos 3" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto7.jpg" alt="Momentos 4" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto8.jpg" alt="Momentos 5" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto9.jpg" alt="Momentos 6" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto10.jpg" alt="Momentos 7" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto11.jpg" alt="Momentos 8" class="gallery-photo"></div>
+        <!-- Fotos 9-16 -->
+        <div class="photo-item animate-photo"><img src="images/foto12.jpg" alt="Momentos 9" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto13.jpg" alt="Momentos 10" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto14.jpg" alt="Momentos 11" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto15.jpg" alt="Momentos 12" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto16.jpg" alt="Momentos 13" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto17.jpg" alt="Momentos 14" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto18.jpg" alt="Momentos 15" class="gallery-photo"></div>
+        <div class="photo-item animate-photo"><img src="images/foto19.jpg" alt="Momentos 16" class="gallery-photo"></div>
       </div>
     </section>
     
     <section class="video-collage">
-      <h2 class="section-title">Memórias em Movimento</h2>
+      <h2 class="section-title animate-title">Memórias em Movimento</h2>
       <div class="video-grid">
-        <video controls class="collage-video" poster="images/poster3.jpg">
-          <source src="videos/video3.mp4" type="video/mp4">
-        </video>
-        <video controls class="collage-video" poster="images/poster4.jpg">
-          <source src="videos/video4.mp4" type="video/mp4">
-        </video>
-        <video controls class="collage-video" poster="images/poster5.jpg">
-          <source src="videos/video5.mp4" type="video/mp4">
-        </video>
-        <video controls class="collage-video" poster="images/poster6.jpg">
-          <source src="videos/video6.mp4" type="video/mp4">
-        </video>
+        <div class="video-item animate-video">
+          <video controls class="collage-video" poster="images/poster3.jpg">
+            <source src="videos/video3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-item animate-video">
+          <video controls class="collage-video" poster="images/poster4.jpg">
+            <source src="videos/video4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-item animate-video">
+          <video controls class="collage-video" poster="images/poster5.jpg">
+            <source src="videos/video5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-item animate-video">
+          <video controls class="collage-video" poster="images/poster6.jpg">
+            <source src="videos/video6.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </section>
     
     <div class="love-letter">
-      <button id="openLetter" class="letter-button">💌 Abrir Carta Especial</button>
+      <button id="openLetter" class="letter-button pulse">💌 Abrir Carta Especial</button>
       <div id="letterContent" class="letter-content">
         <p>Minha amor,</p>
         <p>Quando olho para trás e vejo como começamos, só consigo sorrir. Você foi a teimosia mais linda que já apareceu na minha vida, insistindo em mim quando eu mesma duvidava.</p>
@@ -129,6 +153,7 @@
   </div>
   
   <div class="floating-hearts"></div>
+  <div class="floating-flowers"></div>
   
   <script src="js/script.js"></script>
 </body>

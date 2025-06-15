@@ -1,12 +1,13 @@
 
 /* css/style.css */
 :root {
-  --primary: #4a6fa5;
-  --secondary: #166088;
-  --light: #f8f9fa;
-  --dark: #2a2a2a;
-  --accent: #4fc3f7;
-  --text: #333;
+  --primary: #e91e63;
+  --secondary: #c2185b;
+  --light: #fff9fb;
+  --dark: #333;
+  --accent: #ff80ab;
+  --text: #444;
+  --shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 * {
@@ -28,39 +29,103 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Decoração nos cantos */
+.corner-decoration {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e91e63" d="M100,0 L100,60 C60,60 60,100 0,100 L0,0 Z" opacity="0.1"/></svg>');
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.corner-decoration.top-left {
+  top: 0;
+  left: 0;
+  transform: rotate(0deg);
+}
+
+.corner-decoration.top-right {
+  top: 0;
+  right: 0;
+  transform: rotate(90deg);
+}
+
+.corner-decoration.bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: rotate(270deg);
+}
+
+.corner-decoration.bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
 }
 
 .main-header {
   text-align: center;
   margin-bottom: 40px;
-  padding: 20px 0;
+  padding: 40px 0;
   position: relative;
 }
 
 .title {
   font-family: 'Dancing Script', cursive;
-  color: var(--secondary);
-  font-size: 4rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  color: var(--primary);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  margin-bottom: 15px;
+  text-shadow: var(--shadow);
   animation: fadeInDown 1s ease;
 }
 
 .subtitle {
-  font-size: 1.3rem;
-  color: var(--primary);
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  color: var(--secondary);
   font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
   animation: fadeIn 1.5s ease;
 }
 
+.header-heart {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary);
+  transform: rotate(45deg);
+  opacity: 0.2;
+  animation: pulse 2s infinite;
+}
+
+.header-heart:before, .header-heart:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+.header-heart:before {
+  top: -30px;
+  left: 0;
+}
+
+.header-heart:after {
+  top: 0;
+  left: -30px;
+}
+
 .audio-player {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 40px;
-  border-radius: 50px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  display: block;
+  display: none; /* Escondemos mas o áudio toca */
 }
 
 .story-section {
@@ -69,49 +134,53 @@ body {
 
 .story-card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 60px;
-  gap: 40px;
-  opacity: 0;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.story-card.fade-in {
-  opacity: 1;
-}
-
-.story-card.reverse {
-  flex-direction: row-reverse;
+  gap: 30px;
 }
 
 .story-text {
-  flex: 1;
-  padding: 30px;
+  padding: 25px;
   background: white;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow);
   border: 1px solid rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.story-text.animate-text {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .story-text h2 {
   font-family: 'Dancing Script', cursive;
   color: var(--primary);
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
   margin-bottom: 20px;
 }
 
 .story-text p {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 4vw, 1.1rem);
   margin-bottom: 15px;
   font-weight: 300;
 }
 
 .story-media {
-  flex: 1;
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.6s ease;
+}
+
+.story-media.animate-media {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .zoom-on-hover {
@@ -140,16 +209,24 @@ body {
 .section-title {
   font-family: 'Dancing Script', cursive;
   color: var(--secondary);
-  font-size: 3rem;
+  font-size: clamp(2rem, 7vw, 3rem);
   text-align: center;
   margin: 60px 0 30px;
   position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.section-title.animate-title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-title:after {
   content: '';
   display: block;
-  width: 100px;
+  width: 80px;
   height: 3px;
   background: var(--primary);
   margin: 15px auto;
@@ -161,24 +238,34 @@ body {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
   margin-top: 30px;
+}
+
+.photo-item {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.photo-item.animate-photo {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-photo {
   width: 100%;
-  height: 250px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 10px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.pop-on-hover:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  z-index: 1;
+.gallery-photo:hover {
+  transform: scale(1.1);
 }
 
 .video-collage {
@@ -187,9 +274,23 @@ body {
 
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
   margin-top: 30px;
+}
+
+.video-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.6s ease;
+}
+
+.video-item.animate-video {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .collage-video {
@@ -214,18 +315,24 @@ body {
   color: white;
   border: none;
   padding: 15px 30px;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 4vw, 1.2rem);
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
   font-family: 'Dancing Script', cursive;
+  position: relative;
+  overflow: hidden;
 }
 
 .letter-button:hover {
   background: var(--secondary);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.letter-button.pulse {
+  animation: pulse 2s infinite;
 }
 
 .letter-content {
@@ -236,30 +343,31 @@ body {
   border-radius: 15px;
   margin: 20px auto 0;
   text-align: left;
-  padding: 0 30px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  padding: 0 25px;
+  box-shadow: var(--shadow);
   max-width: 800px;
 }
 
 .letter-content.show {
   max-height: 1000px;
-  padding: 30px;
+  padding: 25px;
 }
 
 .letter-content p {
   margin-bottom: 15px;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 4vw, 1.1rem);
   line-height: 1.8;
 }
 
 .signature {
   font-family: 'Dancing Script', cursive;
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 5vw, 1.8rem);
   color: var(--primary);
   text-align: right;
   margin-top: 20px;
 }
 
+/* Animações de elementos flutuantes */
 .floating-hearts {
   position: fixed;
   top: 0;
@@ -268,6 +376,19 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: -1;
+}
+
+.floating-flowers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e91e63" d="M50,0 C60,20 80,20 100,10 L90,30 C70,40 70,60 80,80 L60,70 C40,80 20,70 10,90 L0,60 C10,40 30,30 30,10 Z" opacity="0.05"/></svg>');
+  background-repeat: repeat;
+  animation: floatBackground 60s linear infinite;
 }
 
 .heart {
@@ -299,17 +420,27 @@ body {
   left: -10px;
 }
 
+/* Animações */
 @keyframes float {
   0% {
     transform: rotate(45deg) translateY(0) scale(0.5);
     opacity: 0;
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.6;
   }
   100% {
     transform: rotate(45deg) translateY(-100vh) scale(1);
     opacity: 0;
+  }
+}
+
+@keyframes floatBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 1000px;
   }
 }
 
@@ -333,42 +464,83 @@ body {
   }
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7);
   }
-  
-  .subtitle {
-    font-size: 1.1rem;
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(233, 30, 99, 0);
   }
-  
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+  }
+}
+
+/* Responsividade para desktop */
+@media (min-width: 768px) {
   .story-card {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
   }
   
   .story-card.reverse {
-    flex-direction: column;
-  }
-  
-  .story-text {
-    padding: 20px;
-  }
-  
-  .story-text h2 {
-    font-size: 1.8rem;
+    flex-direction: row-reverse;
   }
   
   .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
   }
   
   .gallery-photo {
-    height: 180px;
+    height: 200px;
   }
   
   .video-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .corner-decoration {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Efeitos especiais para mobile */
+@media (max-width: 767px) {
+  .main-header {
+    padding: 30px 0;
+  }
+  
+  .header-heart {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .header-heart:before, .header-heart:after {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .header-heart:before {
+    top: -20px;
+  }
+  
+  .header-heart:after {
+    left: -20px;
+  }
+  
+  .letter-button {
+    width: 100%;
+  }
+  
+  .corner-decoration {
+    width: 100px;
+    height: 100px;
   }
 }

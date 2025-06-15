@@ -21,10 +21,35 @@ function verificarRespostas() {
 
 // js/script.js
 document.addEventListener('DOMContentLoaded', function() {
+  // Configura o áudio para tocar automaticamente
+  const audio = document.getElementById('loveSong');
+  audio.volume = 0.3; // Volume mais baixo
+  
+  // Tenta reproduzir o áudio (alguns navegadores bloqueiam autoplay)
+  function playAudio() {
+    const promise = audio.play();
+    
+    if (promise !== undefined) {
+      promise.catch(error => {
+        // Mostra um botão se o autoplay for bloqueado
+        const playButton = document.createElement('button');
+        playButton.textContent = 'Tocar Música';
+        playButton.className = 'letter-button';
+        playButton.style.margin = '20px auto';
+        playButton.style.display = 'block';
+        playButton.onclick = () => {
+          audio.play();
+          playButton.remove();
+        };
+        document.querySelector('.main-header').appendChild(playButton);
+      });
+    }
+  }
+  
   // Cria corações flutuantes
   function createHearts() {
     const heartsContainer = document.querySelector('.floating-hearts');
-    const heartCount = 20;
+    const heartCount = 15;
     
     for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
@@ -42,23 +67,25 @@ document.addEventListener('DOMContentLoaded', function() {
       heart.style.width = `${size}px`;
       heart.style.height = `${size}px`;
       
+      // Opacidade aleatória
+      heart.style.opacity = Math.random() * 0.3 + 0.1;
+      
       heartsContainer.appendChild(heart);
     }
   }
   
   // Animação de scroll para as seções
   function animateOnScroll() {
-    const storyCards = document.querySelectorAll('.story-card');
+    const animateElements = document.querySelectorAll('.story-text, .story-media, .section-title, .photo-item, .video-item');
     
-    storyCards.forEach((card, index) => {
-      const cardPosition = card.getBoundingClientRect().top;
-      const screenPosition = window.innerHeight / 1.3;
+    animateElements.forEach((element, index) => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.2;
       
-      if (cardPosition < screenPosition) {
-        // Adiciona um delay progressivo para cada card
+      if (elementPosition < screenPosition) {
         setTimeout(() => {
-          card.classList.add('fade-in');
-        }, index * 200);
+          element.classList.add('animate-' + element.classList[0]);
+        }, index * 100);
       }
     });
   }
@@ -74,11 +101,20 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Inicializa tudo
+  playAudio();
   createHearts();
   window.addEventListener('scroll', animateOnScroll);
   animateOnScroll(); // Executa uma vez ao carregar
   
-  // Configura o player de áudio para começar suave
-  const audioPlayer = document.querySelector('.audio-player');
-  audioPlayer.volume = 0.3;
+  // Verifica se é mobile para ajustes específicos
+  function checkIfMobile() {
+    if (window.innerWidth <= 767) {
+      document.body.classList.add('mobile');
+    } else {
+      document.body.classList.remove('mobile');
+    }
+  }
+  
+  window.addEventListener('resize', checkIfMobile);
+  checkIfMobile();
 });
