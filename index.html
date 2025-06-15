@@ -1,32 +1,85 @@
-<!-- Novo design com mais elementos visuais e texto emocional na página de login. --><!-- Estrutura básica da página index.html - com texto emocional, corações animados e login interativo --><!DOCTYPE html><html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surpresa para Danizinha 💘</title>
+  <title>Quiz do Nosso Amor 💘</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="hearts">
+  <div class="hearts-container">
     <div class="heart"></div>
     <div class="heart"></div>
     <div class="heart"></div>
-  </div>  <div class="container">
-    <h1>Oi, minha Danizinha 💖</h1>
-    <p class="mensagem-inicial">
-      Quando eu vi você pela primeira vez com aquela cara de que não queria estar ali num sábado,
-      eu sabia, sabia que iria dar um jeito de conquistar você e uau, eu consegui. Me sinto a pessoa mais sortuda
-      quando estou com você, porque você me faz sentir especial com suas ações, com seus muitos jeitos de me dizer
-      que me ama. Por muito me sinto uma otária tentando colocar em palavras aquilo que você me diz tão bem com os olhos.
-    </p>
-    <h2>Agora responda, minha linda 💌</h2>
-    <input type="text" id="pergunta1" placeholder="Qual é nosso apelido?">
-    <input type="text" id="pergunta2" placeholder="Onde nos conhecemos?">
-    <input type="text" id="pergunta3" placeholder="Quem falou eu te amo primeiro?">
-    <input type="text" id="pergunta4" placeholder="Quem é mais carinhosa?">
-    <button onclick="verificarRespostas()">Ver Surpresa 💕</button>
-    <p class="error" id="mensagemErro"></p>
+    <div class="heart"></div>
+    <div class="heart"></div>
   </div>
+  
+  <div class="container">
+    <h1>Quiz do Nosso Amor 💖</h1>
+    
+    <div class="intro-message">
+      <p>Antes de ver nossa história especial, vamos testar o quanto você se lembra dos nossos momentos juntas!</p>
+      <p>Responda com carinho cada pergunta para desbloquear a surpresa que preparei com todo meu amor.</p>
+    </div>
+    
+    <div class="quiz-form">
+      <div class="question">
+        <label for="pergunta1">1. Qual é o nosso apelido carinhoso?</label>
+        <input type="text" id="pergunta1" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta2">2. Onde nos conhecemos?</label>
+        <input type="text" id="pergunta2" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta3">3. Quem disse "eu te amo" primeiro?</label>
+        <input type="text" id="pergunta3" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta4">4. Quem é mais carinhosa no dia a dia?</label>
+        <input type="text" id="pergunta4" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta5">5. o que aconteceu no nosso primeiro piquenique?</label>
+        <input type="text" id="pergunta5" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta6">6. o que eu tava fazendo no piquenique na fatídica hora?</label>
+        <input type="text" id="pergunta6" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta7">7. O que eu cozinhei quando você veio à minha casa pela primeira vez?</label>
+        <input type="text" id="pergunta7" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta8">8. O que eu sempre faço que te deixa louca?</label>
+        <input type="text" id="pergunta8" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta9">9. Qual emoji eu sempre uso?</label>
+        <input type="text" id="pergunta9" placeholder="Escreva aqui...">
+      </div>
+      
+      <div class="question">
+        <label for="pergunta10">10. Complete: Eu te amo mais que...</label>
+        <input type="text" id="pergunta10" placeholder="Escreva aqui...">
+      </div>
+      
+      <button class="quiz-button" onclick="verificarRespostas()">Ver Nossa História 💕</button>
+      <p class="error-message" id="mensagemErro"></p>
+    </div>
+  </div>
+  
   <script src="js/script.js"></script>
 </body>
-</html><!-- Depois criaremos a nova versão de historia.html com estilo de "feed"/rede social -->
+</html>

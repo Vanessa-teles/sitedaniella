@@ -1,19 +1,92 @@
-function verificarRespostas() {
-  const r1 = document.getElementById('pergunta1').value.trim().toLowerCase();
-  const r2 = document.getElementById('pergunta2').value.trim().toLowerCase();
-  const r3 = document.getElementById('pergunta3').value.trim().toLowerCase();
-  const r4 = document.getElementById('pergunta4').value.trim().toLowerCase();
-
-  const certas = r1 === 'criança' && r2 === 'no trabalho' && r3 === 'vanessa' && r4 === 'daniella';
-
-  const erro = document.getElementById('mensagemErro');
-
-  if (certas) {
-    window.location.href = 'historia.html';
-  } else {
-    erro.innerText = 'Hmm... tenta lembrar com carinho. Você consegue! 💗';
+// js/script.js
+// Cria corações flutuantes
+function createHearts() {
+  const container = document.querySelector('.hearts-container');
+  const heartCount = 15;
+  
+  for (let i = 0; i < heartCount; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    
+    // Posição aleatória
+    heart.style.left = `${Math.random() * 100}%`;
+    
+    // Atraso e duração aleatórios
+    heart.style.animationDelay = `${Math.random() * 5}s`;
+    heart.style.animationDuration = `${Math.random() * 3 + 4}s`;
+    
+    // Tamanho aleatório
+    const size = Math.random() * 15 + 10;
+    heart.style.width = `${size}px`;
+    heart.style.height = `${size}px`;
+    
+    container.appendChild(heart);
   }
 }
+
+// Verifica as respostas do quiz
+function verificarRespostas() {
+  // Respostas corretas (personalize com suas respostas)
+  const respostasCorretas = {
+    pergunta1: 'criança',
+    pergunta2: 'no trabalho',
+    pergunta3: 'vanessa',
+    pergunta4: 'as duas',
+    pergunta5: 'fomos assaltadas', // Substitua pela resposta real
+    pergunta6: 'tentando te chupar', // Substitua pela resposta real
+    pergunta7: 'macarrão ao molho branco', // Substitua pela resposta real
+    pergunta8: 'quando a vanessa não avisa que chegou', // Substitua pela resposta real
+    pergunta9: '😒', // Substitua pela resposta real
+    pergunta10: 'harry potter' // Substitua pela resposta real
+  };
+
+  const erroElement = document.getElementById('mensagemErro');
+  let todasCorretas = true;
+
+  // Verifica cada pergunta
+  for (let i = 1; i <= 10; i++) {
+    const respostaUsuario = document.getElementById(`pergunta${i}`).value.trim().toLowerCase();
+    const respostaCorreta = respostasCorretas[`pergunta${i}`];
+    
+    if (respostaUsuario !== respostaCorreta) {
+      todasCorretas = false;
+      // Adiciona classe de erro ao input
+      document.getElementById(`pergunta${i}`).classList.add('input-error');
+    } else {
+      // Remove classe de erro se estiver correta
+      document.getElementById(`pergunta${i}`).classList.remove('input-error');
+    }
+  }
+
+  if (todasCorretas) {
+    // Todas corretas - redireciona para a página de história
+    window.location.href = 'historia.html';
+  } else {
+    // Mostra mensagem de erro
+    erroElement.textContent = 'Algumas respostas não estão corretas. Tente lembrar com carinho! 💕';
+    
+    // Adiciona animação de shake nos inputs errados
+    const inputsErrados = document.querySelectorAll('.input-error');
+    inputsErrados.forEach(input => {
+      input.classList.add('shake');
+      setTimeout(() => input.classList.remove('shake'), 500);
+    });
+  }
+}
+
+// Inicializa a página
+document.addEventListener('DOMContentLoaded', function() {
+  createHearts();
+  
+  // Permite submeter com Enter
+  document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        verificarRespostas();
+      }
+    });
+  });
+});
 
 
 
