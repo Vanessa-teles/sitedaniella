@@ -261,15 +261,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 5000);
 
-  // Move o envelope pela tela de vez em quando
-  setInterval(function() {
-    if (!isEnvelopeOpen) {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 150);
-      envelopeContainer.style.left = `${x}px`;
-      envelopeContainer.style.top = `${y}px`;
+  
+ setInterval(function() {
+  if (!isEnvelopeOpen) {
+    // Escolhe qual borda (0: topo, 1: direita, 2: baixo, 3: esquerda)
+    const border = Math.floor(Math.random() * 4);
+    let x, y;
+    
+    switch(border) {
+      case 0: // Topo
+        x = Math.random() * (window.innerWidth - 100);
+        y = 20;
+        break;
+      case 1: // Direita
+        x = window.innerWidth - 120;
+        y = Math.random() * (window.innerHeight - 150);
+        break;
+      case 2: // Baixo
+        x = Math.random() * (window.innerWidth - 100);
+        y = window.innerHeight - 170;
+        break;
+      case 3: // Esquerda
+        x = 20;
+        y = Math.random() * (window.innerHeight - 150);
+        break;
     }
-  }, 15000);
+    
+    envelopeContainer.style.left = `${x}px`;
+    envelopeContainer.style.top = `${y}px`;
+  }
+}, 15000);
 
   // (Manter o resto do código anterior...)
   playAudio();
