@@ -13,25 +13,55 @@
       <source src="audio/casula.mp3" type="audio/mpeg" />
       Seu navegador não suporta áudio.
     </audio>
-    <div class="post">
+
+    <!-- Espaço para fotos (10 fotos) -->
+    <div class="gallery">
       <img src="images/foto1.jpg" alt="Foto 1" />
-      <p class="caption">📸 Nosso primeiro passeio juntos.</p>
-      <p class="comment">Eu me lembro de cada sorriso seu naquele dia...</p>
-    </div>
-    <div class="post">
       <img src="images/foto2.jpg" alt="Foto 2" />
-      <p class="caption">🌸 Um dia comum com você vira meu favorito.</p>
-      <p class="comment">Cada momento ao seu lado é um presente.</p>
+      <img src="images/foto3.jpg" alt="Foto 3" />
+      <img src="images/foto4.jpg" alt="Foto 4" />
+      <img src="images/foto5.jpg" alt="Foto 5" />
+      <img src="images/foto6.jpg" alt="Foto 6" />
+      <img src="images/foto7.jpg" alt="Foto 7" />
+      <img src="images/foto8.jpg" alt="Foto 8" />
+      <img src="images/foto9.jpg" alt="Foto 9" />
+      <img src="images/foto10.jpg" alt="Foto 10" />
     </div>
-    <div class="post">
-      <p class="caption">💬 Eu te amo mais a cada dia.</p>
-      <p class="comment arrow">→ Você é minha melhor escolha, sempre.</p>
+
+    <!-- Efeito envelope com mensagem -->
+    <div class="envelope" id="envelope">
+      <div class="heart"></div>
+      <div class="envelope-content" id="message">
+        <p>🌹 "Eu te amo mais do que palavras podem expressar. Você é a razão do meu sorriso!" 🌹</p>
+      </div>
     </div>
-    <div class="post">
-      <p class="caption">❤ Pequenas lembranças, grandes sentimentos.</p>
-      <p class="comment arrow">→ Nosso amor cresce a cada instante.</p>
-    </div>
-    <p class="nota">💌 Eu escolhi Casula da Carol Biazin só porque amo você — não pela música 😅</p>
+
+    <p class="nota">💌 Eu escolhi *Casula* da Carol Biazin só porque amo você — não pela música 😅</p>
   </div>
+
+  <!-- Script para efeitos de coração piscando e envelope -->
+  <script>
+    const heartElement = document.querySelector('.heart');
+    const envelope = document.getElementById('envelope');
+    const message = document.getElementById('message');
+
+    // Adiciona o efeito de corações piscando
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.animationDuration = `${Math.random() * 3 + 3}s`; // Variedade no tempo do "flutuar"
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000); // Remove o coração após ele flutuar
+    }, 1000); // Cria um novo coração a cada 1 segundo
+
+    // Efeito para mostrar mensagem no envelope
+    envelope.addEventListener('click', () => {
+      message.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
