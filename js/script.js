@@ -262,21 +262,31 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 5000);
 
 
- // Move o envelope pela tela de forma controlada
 setInterval(function() {
   if (!isEnvelopeOpen) {
-    // Limita a área de movimento (deixando 20% de margem nas bordas)
-    const margin = 0.2;
-    const minX = window.innerWidth * margin;
-    const maxX = window.innerWidth * (1 - margin) - 100;
-    const minY = window.innerHeight * margin;
-    const maxY = window.innerHeight * (1 - margin) - 150;
+    // Escolhe qual borda (0: topo, 1: direita, 2: baixo, 3: esquerda)
+    const border = Math.floor(Math.random() * 4);
+    let x, y;
     
-    // Gera posições aleatórias dentro da área segura
-    const x = minX + Math.random() * (maxX - minX);
-    const y = minY + Math.random() * (maxY - minY);
+    switch(border) {
+      case 0: // Topo
+        x = Math.random() * (window.innerWidth - 100);
+        y = 20;
+        break;
+      case 1: // Direita
+        x = window.innerWidth - 120;
+        y = Math.random() * (window.innerHeight - 150);
+        break;
+      case 2: // Baixo
+        x = Math.random() * (window.innerWidth - 100);
+        y = window.innerHeight - 170;
+        break;
+      case 3: // Esquerda
+        x = 20;
+        y = Math.random() * (window.innerHeight - 150);
+        break;
+    }
     
-    // Aplica as novas posições
     envelopeContainer.style.left = `${x}px`;
     envelopeContainer.style.top = `${y}px`;
   }
