@@ -3,228 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nosso Amor 💘</title>
+  <title>Nosso Amor</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="love-background"></div>
+  
   <div class="container">
-    <header>
-      <h1>Nosso Amor 💘</h1>
-      <p class="subtitle">Cada momento ao seu lado é um capítulo da nossa história</p>
+    <header class="main-header">
+      <h1 class="title">Nossa Jornada</h1>
+      <p class="subtitle">Um amor que começou escondido e se tornou nossa maior verdade</p>
     </header>
     
-    <audio controls class="audio-player">
+    <audio controls class="audio-player" loop>
       <source src="audio/casula.mp3" type="audio/mpeg" />
       Seu navegador não suporta áudio.
     </audio>
     
-    <div class="feed">
-      <!-- Post com Vídeo 1 -->
-      <div class="post">
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=1" alt="Perfil" class="profile-pic">
-          <div>
-            <span class="post-user">Nossos Momentos</span>
-            <span class="post-time">14 de junho · 🎥</span>
-          </div>
+    <section class="story-section">
+      <div class="story-card fade-in">
+        <div class="story-text">
+          <h2>O Primeiro Olhar</h2>
+          <p>No trabalho, entre tarefas e correria, meus olhos encontraram os seus. Foi instantâneo - uma conexão que não entendi na hora. Você era essa mulher incrível, mais experiente, que me deixou completamente encantada.</p>
         </div>
-        <div class="post-content">
-          <p>Essa foi nossa primeira viagem juntos! Lembra como foi especial? ❤️</p>
+        <div class="story-media">
+          <img src="images/foto1.jpg" alt="Nosso começo" class="zoom-on-hover">
         </div>
-        <div class="video-container">
-          <video controls class="post-video" poster="https://source.unsplash.com/random/600x400/?beach,couple">
+      </div>
+      
+      <div class="story-card fade-in reverse">
+        <div class="story-text">
+          <h2>Resistência e Atração</h2>
+          <p>Eu insistia que não queria nada sério, tentando convencer a mim mesma. Mas você, teimosa e determinada, foi pacientemente conquistando cada pedacinho do meu coração. Cada gesto, cada cuidado seu foi me envolvendo numa rede de sentimentos que não consegui evitar.</p>
+        </div>
+        <div class="story-media">
+          <img src="images/foto2.jpg" alt="Momentos especiais" class="zoom-on-hover">
+        </div>
+      </div>
+      
+      <div class="story-card fade-in">
+        <div class="story-text">
+          <h2>O Amor Escondido</h2>
+          <p>Nosso amor começou às escondidas, com olhares discretos no trabalho e encontros cheios de emoção. Eu tentava te afastar, duvidando que poderia dar certo, mas você sempre soube que valia a pena. E como valeu!</p>
+        </div>
+        <div class="story-media">
+          <video controls class="story-video" poster="images/poster1.jpg">
             <source src="videos/video1.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos.
           </video>
         </div>
-        <div class="post-actions">
-          <button class="action-btn">❤️ 1.8k</button>
-          <button class="action-btn">💬 423</button>
-          <button class="action-btn">🔁 97</button>
+      </div>
+      
+      <div class="story-card fade-in reverse">
+        <div class="story-text">
+          <h2>A Rendição</h2>
+          <p>Quando finalmente me rendi ao que sentia, descobri o amor mais puro e verdadeiro. Você me mostrou que o coração não escolhe hora nem idade, e que quando é pra ser, a vida sempre acha um jeito.</p>
+        </div>
+        <div class="story-media">
+          <img src="images/foto3.jpg" alt="Felizes juntas" class="zoom-on-hover">
         </div>
       </div>
       
-      <!-- Post com Fotos -->
-      <div class="post">
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=2" alt="Perfil" class="profile-pic">
-          <div>
-            <span class="post-user">Nossa História</span>
-            <span class="post-time">10 de junho · 📅</span>
-          </div>
+      <div class="story-card fade-in">
+        <div class="story-text">
+          <h2>Nossa Realização</h2>
+          <p>E aqui estamos, construindo nosso amor a cada dia. Você é meu porto seguro, minha alegria, meu maior presente. Como eu teria perdido se tivesse insistido em te afastar... Que sorte a minha ter você insistido tanto!</p>
         </div>
-        <div class="post-content">
-          <p>Lembra do nosso primeiro encontro? Eu já sabia que você era especial desde aquele momento...</p>
-        </div>
-        <div class="gallery">
-          <img src="https://source.unsplash.com/random/300x300/?date" alt="Foto 1" onclick="openModal(this.src)">
-          <img src="https://source.unsplash.com/random/300x300/?restaurant" alt="Foto 2" onclick="openModal(this.src)">
-          <img src="https://source.unsplash.com/random/300x300/?kiss" alt="Foto 3" onclick="openModal(this.src)">
-        </div>
-        <div class="post-actions">
-          <button class="action-btn">❤️ 2.4k</button>
-          <button class="action-btn">💬 512</button>
-          <button class="action-btn">🔁 87</button>
-        </div>
-      </div>
-      
-      <!-- Post com Vídeo 2 -->
-      <div class="post">
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=3" alt="Perfil" class="profile-pic">
-          <div>
-            <span class="post-user">Surpresa Romântica</span>
-            <span class="post-time">8 de junho · 🎬</span>
-          </div>
-        </div>
-        <div class="post-content">
-          <p>Esse foi o dia que eu preparei aquela surpresa especial para você! Sua reação foi a melhor parte 😍</p>
-        </div>
-        <div class="video-container">
-          <video controls class="post-video" poster="https://source.unsplash.com/random/600x400/?surprise,love">
+        <div class="story-media">
+          <video controls class="story-video" poster="images/poster2.jpg">
             <source src="videos/video2.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos.
           </video>
         </div>
-        <div class="post-actions">
-          <button class="action-btn">❤️ 3.5k</button>
-          <button class="action-btn">💬 892</button>
-          <button class="action-btn">🔁 245</button>
-        </div>
       </div>
-      
-      <!-- Post com Vídeo 3 -->
-      <div class="post">
-        <div class="post-header">
-          <img src="https://i.pravatar.cc/150?img=4" alt="Perfil" class="profile-pic">
-          <div>
-            <span class="post-user">Mensagem Especial</span>
-            <span class="post-time">5 de junho · 💌</span>
-          </div>
-        </div>
-        <div class="post-content">
-          <p>Gravei esse vídeo especialmente para você no Dia dos Namorados. Espero que goste!</p>
-        </div>
-        <div class="video-container">
-          <video controls class="post-video" poster="https://source.unsplash.com/random/600x400/?message,heart">
-            <source src="videos/video3.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos.
-          </video>
-        </div>
-        <div class="post-actions">
-          <button class="action-btn">❤️ 4.2k</button>
-          <button class="action-btn">💬 1.1k</button>
-          <button class="action-btn">🔁 312</button>
-        </div>
+    </section>
+    
+    <section class="gallery-section">
+      <h2 class="section-title">Nossos Momentos</h2>
+      <div class="photo-grid">
+        <img src="images/foto4.jpg" alt="Momentos 1" class="gallery-photo pop-on-hover">
+        <img src="images/foto5.jpg" alt="Momentos 2" class="gallery-photo pop-on-hover">
+        <img src="images/foto6.jpg" alt="Momentos 3" class="gallery-photo pop-on-hover">
+        <img src="images/foto7.jpg" alt="Momentos 4" class="gallery-photo pop-on-hover">
+        <img src="images/foto8.jpg" alt="Momentos 5" class="gallery-photo pop-on-hover">
+        <img src="images/foto9.jpg" alt="Momentos 6" class="gallery-photo pop-on-hover">
+        <img src="images/foto10.jpg" alt="Momentos 7" class="gallery-photo pop-on-hover">
+        <img src="images/foto11.jpg" alt="Momentos 8" class="gallery-photo pop-on-hover">
+        <img src="images/foto12.jpg" alt="Momentos 9" class="gallery-photo pop-on-hover">
+        <img src="images/foto13.jpg" alt="Momentos 10" class="gallery-photo pop-on-hover">
+        <img src="images/foto14.jpg" alt="Momentos 11" class="gallery-photo pop-on-hover">
+        <img src="images/foto15.jpg" alt="Momentos 12" class="gallery-photo pop-on-hover">
+        <img src="images/foto16.jpg" alt="Momentos 13" class="gallery-photo pop-on-hover">
+      </div>
+    </section>
+    
+    <section class="video-collage">
+      <h2 class="section-title">Memórias em Movimento</h2>
+      <div class="video-grid">
+        <video controls class="collage-video" poster="images/poster3.jpg">
+          <source src="videos/video3.mp4" type="video/mp4">
+        </video>
+        <video controls class="collage-video" poster="images/poster4.jpg">
+          <source src="videos/video4.mp4" type="video/mp4">
+        </video>
+        <video controls class="collage-video" poster="images/poster5.jpg">
+          <source src="videos/video5.mp4" type="video/mp4">
+        </video>
+        <video controls class="collage-video" poster="images/poster6.jpg">
+          <source src="videos/video6.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+    
+    <div class="love-letter">
+      <button id="openLetter" class="letter-button">💌 Abrir Carta Especial</button>
+      <div id="letterContent" class="letter-content">
+        <p>Minha amor,</p>
+        <p>Quando olho para trás e vejo como começamos, só consigo sorrir. Você foi a teimosia mais linda que já apareceu na minha vida, insistindo em mim quando eu mesma duvidava.</p>
+        <p>Cada dia ao seu lado é uma prova de que o amor verdadeiro existe. Você me transformou, me fez melhor, me mostrou que valia a pena se entregar.</p>
+        <p>Obrigada por não ter desistido de mim. Obrigada por cada gesto, cada paciência, cada "eu te amo". Não existe lugar no mundo onde eu me sinta mais em casa do que nos seus braços.</p>
+        <p>Que nossa história continue sendo escrita com muitos capítulos de amor, risadas e cumplicidade.</p>
+        <p>Para sempre sua,</p>
+        <p class="signature">Sua Namorada Feliz</p>
       </div>
     </div>
-    
-    <p class="nota">💌 Eu escolhi *Casula* da Carol Biazin só porque amo você — não pela música 😅</p>
   </div>
   
-  <!-- Envelope flutuante -->
-  <div class="envelope-container" id="envelopeContainer">
-    <div class="envelope" id="envelope">
-      <div class="heart"></div>
-      <div class="envelope-content" id="message">
-        <p id="messageText">🌹 "Eu te amo mais do que palavras podem expressar. Você é a razão do meu sorriso!" 🌹</p>
-      </div>
-    </div>
-  </div>
+  <div class="floating-hearts"></div>
   
-  <!-- Modal para imagens -->
-  <div class="modal" id="imageModal">
-    <span class="close-modal" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-      <img id="modalImage" src="" alt="Imagem ampliada">
-    </div>
-  </div>
-  
-  <script>
-    // Mensagens românticas para o envelope
-    const messages = [
-      "🌹 Você é o amor da minha vida e meu maior presente! Cada dia ao seu lado é uma bênção. 🌹",
-      "💖 Se eu pudesse escolher novamente, escolheria você em todas as vidas possíveis. 💖",
-      "✨ Você transformou minha vida em algo extraordinário. Obrigado por existir! ✨",
-      "🌙 Quando estou com você, até as noites mais escuras têm estrelas. Te amo! 🌙",
-      "🍀 Você é a sorte da minha vida. Meu maior tesouro. �",
-      "💫 Se amor fosse um superpoder, o seu seria o mais forte do universo. 💫",
-      "🌻 Você é meu sol em dias nublados e minha luz nas noites escuras. 🌻",
-      "💞 O meu coração bate no ritmo do seu nome. Você é minha melodia favorita. 💞",
-      "🦋 Você me completa de um jeito que nem eu sabia que faltava. 🦋",
-      "🌈 Com você, até a chuva tem cor de arco-íris. Obrigado por colorir minha vida! 🌈"
-    ];
-    
-    // Efeito de corações flutuantes
-    function createHearts() {
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('floating-heart');
-        heart.style.left = `${Math.random() * 100}%`;
-        heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
-        heart.style.opacity = Math.random() * 0.5 + 0.3;
-        document.body.appendChild(heart);
-        
-        setTimeout(() => {
-          heart.remove();
-        }, 6000);
-      }, 300);
-    }
-    
-    // Envelope interativo
-    function setupEnvelope() {
-      const envelope = document.getElementById('envelope');
-      const envelopeContainer = document.getElementById('envelopeContainer');
-      const messageText = document.getElementById('messageText');
-      let isOpen = false;
-      
-      envelopeContainer.addEventListener('click', () => {
-        isOpen = !isOpen;
-        
-        if (isOpen) {
-          envelope.classList.add('open');
-          const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-          messageText.textContent = randomMessage;
-        } else {
-          envelope.classList.remove('open');
-        }
-      });
-      
-      setInterval(() => {
-        if (!isOpen) {
-          const x = Math.random() * (window.innerWidth - 100);
-          const y = Math.random() * (window.innerHeight - 100);
-          envelopeContainer.style.left = `${x}px`;
-          envelopeContainer.style.top = `${y}px`;
-        }
-      }, 20000);
-    }
-    
-    // Modal para imagens
-    function openModal(src) {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImage');
-      modal.style.display = 'flex';
-      modalImg.src = src;
-    }
-    
-    function closeModal() {
-      document.getElementById('imageModal').style.display = 'none';
-    }
-    
-    // Inicializa tudo quando a página carrega
-    window.onload = function() {
-      createHearts();
-      setupEnvelope();
-      
-      // Fecha o modal se clicar fora da imagem
-      window.addEventListener('click', function(event) {
-        const modal = document.getElementById('imageModal');
-        if (event.target === modal) {
-          closeModal();
-        }
-      });
-    };
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -14,3 +14,84 @@ function verificarRespostas() {
     erro.innerText = 'Hmm... tenta lembrar com carinho. Você consegue! 💗';
   }
 }
+
+
+
+
+
+// js/script.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Cria corações flutuantes
+  function createHearts() {
+    const heartsContainer = document.querySelector('.floating-hearts');
+    const heartCount = 30;
+    
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      
+      // Posição aleatória
+      heart.style.left = `${Math.random() * 100}%`;
+      
+      // Atraso e duração aleatórios
+      heart.style.animationDelay = `${Math.random() * 5}s`;
+      heart.style.animationDuration = `${Math.random() * 3 + 4}s`;
+      
+      // Tamanho aleatório
+      const size = Math.random() * 15 + 10;
+      heart.style.width = `${size}px`;
+      heart.style.height = `${size}px`;
+      
+      // Cor aleatória (tons de rosa/vermelho)
+      const hue = Math.floor(Math.random() * 20) + 330;
+      heart.style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
+      heart.querySelector(':before').style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
+      heart.querySelector(':after').style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
+      
+      heartsContainer.appendChild(heart);
+    }
+  }
+  
+  // Animação de scroll para as seções
+  function animateOnScroll() {
+    const storyCards = document.querySelectorAll('.story-card');
+    
+    storyCards.forEach((card, index) => {
+      const cardPosition = card.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if (cardPosition < screenPosition) {
+        // Adiciona um delay progressivo para cada card
+        setTimeout(() => {
+          card.classList.add('fade-in');
+          
+          // Adiciona uma leve animação de direção alternada
+          if (index % 2 === 0) {
+            card.style.transform = 'translateX(0)';
+          } else {
+            card.style.transform = 'translateX(0)';
+          }
+        }, index * 200);
+      }
+    });
+  }
+  
+  // Carta de amor interativa
+  const openLetterBtn = document.getElementById('openLetter');
+  const letterContent = document.getElementById('letterContent');
+  
+  openLetterBtn.addEventListener('click', function() {
+    letterContent.classList.toggle('show');
+    openLetterBtn.textContent = letterContent.classList.contains('show') ? 
+      '💌 Fechar Carta' : '💌 Abrir Carta Especial';
+  });
+  
+  // Inicializa tudo
+  createHearts();
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // Executa uma vez ao carregar
+  
+  // Configura o player de áudio para começar suave
+  const audioPlayer = document.querySelector('.audio-player');
+  audioPlayer.volume = 0.3;
+});
