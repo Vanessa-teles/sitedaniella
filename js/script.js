@@ -118,3 +118,90 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', checkIfMobile);
   checkIfMobile();
 });
+
+
+// js/script.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Mensagens românticas para o envelope
+  const messages = [
+    "🌹 Você é o amor da minha vida e meu maior presente! Cada dia ao seu lado é uma bênção. 🌹",
+    "💖 Se eu pudesse escolher novamente, escolheria você em todas as vidas possíveis. 💖",
+    "✨ Você transformou minha vida em algo extraordinário. Obrigado por existir! ✨",
+    "🌙 Quando estou com você, até as noites mais escuras têm estrelas. Te amo! 🌙",
+    "🍀 Você é a sorte da minha vida. Meu maior tesouro. 🍀",
+    "💫 Se amor fosse um superpoder, o seu seria o mais forte do universo. 💫",
+    "🌻 Você é meu sol em dias nublados e minha luz nas noites escuras. 🌻",
+    "💞 O meu coração bate no ritmo do seu nome. Você é minha melodia favorita. 💞",
+    "🦋 Você me completa de um jeito que nem eu sabia que faltava. 🦋",
+    "🌈 Com você, até a chuva tem cor de arco-íris. Obrigado por colorir minha vida! 🌈",
+    "💌 Se o amor fosse uma carta, eu escreveria para você todos os dias da minha vida. 💌",
+    "🎶 Você é a música que meu coração sempre quis cantar. 🎶",
+    "💕 Meu amor por você é maior que o universo e todas as suas galáxias. 💕",
+    "🌠 Você é a estrela que guia meus dias e ilumina minhas noites. 🌠",
+    "💘 Amar você não é uma escolha, é algo tão natural quanto respirar. 💘"
+  ];
+
+  // Configura o envelope flutuante
+  const envelope = document.getElementById('envelope');
+  const envelopeContainer = document.getElementById('envelopeContainer');
+  const envelopeMessage = document.getElementById('envelopeMessage');
+  const messageText = document.getElementById('messageText');
+  
+  let isEnvelopeOpen = false;
+  let currentMessageIndex = 0;
+
+  // Mostra uma mensagem aleatória
+  function showRandomMessage() {
+    currentMessageIndex = Math.floor(Math.random() * messages.length);
+    messageText.textContent = messages[currentMessageIndex];
+  }
+
+  // Abre/fecha o envelope
+  envelopeContainer.addEventListener('click', function() {
+    isEnvelopeOpen = !isEnvelopeOpen;
+    
+    if (isEnvelopeOpen) {
+      envelope.classList.add('open');
+      envelopeMessage.classList.add('show');
+      showRandomMessage();
+    } else {
+      envelope.classList.remove('open');
+      envelopeMessage.classList.remove('show');
+    }
+  });
+
+  // Alterna mensagens periodicamente quando aberto
+  setInterval(function() {
+    if (isEnvelopeOpen) {
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * messages.length);
+      } while (newIndex === currentMessageIndex);
+      
+      currentMessageIndex = newIndex;
+      messageText.style.opacity = 0;
+      
+      setTimeout(function() {
+        messageText.textContent = messages[currentMessageIndex];
+        messageText.style.opacity = 1;
+      }, 500);
+    }
+  }, 5000);
+
+  // Move o envelope pela tela de vez em quando
+  setInterval(function() {
+    if (!isEnvelopeOpen) {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 150);
+      envelopeContainer.style.left = `${x}px`;
+      envelopeContainer.style.top = `${y}px`;
+    }
+  }, 15000);
+
+  // (Manter o resto do código anterior...)
+  playAudio();
+  createHearts();
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll();
+  checkIfMobile();
+});
