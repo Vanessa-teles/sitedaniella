@@ -468,8 +468,10 @@ body {
 
 .collage-video {
   width: 100%;
+  height: auto;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
 .collage-video:hover {

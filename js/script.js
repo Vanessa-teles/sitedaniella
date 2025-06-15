@@ -278,3 +278,10 @@ document.addEventListener('DOMContentLoaded', function() {
   animateOnScroll();
   checkIfMobile();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const videos = document.querySelectorAll('video[autoplay]');
+  videos.forEach(video => {
+    video.play().catch(e => console.log('Autoplay prevented:', e));
+  });
+});
