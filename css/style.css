@@ -148,11 +148,11 @@ h1 {
 
 /* css/style.css */
 :root {
-  --primary: #ff6b81;
-  --secondary: #ff4757;
-  --light: #fff6f6;
-  --dark: #2f3542;
-  --accent: #ff9ff3;
+  --primary: #4a6fa5;
+  --secondary: #166088;
+  --light: #f8f9fa;
+  --dark: #2a2a2a;
+  --accent: #4fc3f7;
   --text: #333;
 }
 
@@ -169,16 +169,6 @@ body {
   overflow-x: hidden;
   background-color: var(--light);
   position: relative;
-}
-
-.love-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255,107,129,0.1) 0%, rgba(255,71,87,0.05) 100%);
-  z-index: -1;
 }
 
 .container {
@@ -216,7 +206,7 @@ body {
   margin: 0 auto 40px;
   border-radius: 50px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(255,107,129,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   display: block;
 }
 
@@ -244,11 +234,10 @@ body {
 .story-text {
   flex: 1;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.8);
+  background: white;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255,107,129,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .story-text h2 {
@@ -335,7 +324,7 @@ body {
 
 .pop-on-hover:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(255,107,129,0.3);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   z-index: 1;
 }
 
@@ -376,26 +365,27 @@ body {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(255,107,129,0.4);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   font-family: 'Dancing Script', cursive;
 }
 
 .letter-button:hover {
   background: var(--secondary);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255,71,87,0.5);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .letter-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.8s ease, padding 0.8s ease;
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   border-radius: 15px;
-  margin-top: 20px;
+  margin: 20px auto 0;
   text-align: left;
   padding: 0 30px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  max-width: 800px;
 }
 
 .letter-content.show {

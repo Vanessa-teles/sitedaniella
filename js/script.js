@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cria corações flutuantes
   function createHearts() {
     const heartsContainer = document.querySelector('.floating-hearts');
-    const heartCount = 30;
+    const heartCount = 20;
     
     for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
@@ -42,12 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
       heart.style.width = `${size}px`;
       heart.style.height = `${size}px`;
       
-      // Cor aleatória (tons de rosa/vermelho)
-      const hue = Math.floor(Math.random() * 20) + 330;
-      heart.style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
-      heart.querySelector(':before').style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
-      heart.querySelector(':after').style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
-      
       heartsContainer.appendChild(heart);
     }
   }
@@ -64,13 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Adiciona um delay progressivo para cada card
         setTimeout(() => {
           card.classList.add('fade-in');
-          
-          // Adiciona uma leve animação de direção alternada
-          if (index % 2 === 0) {
-            card.style.transform = 'translateX(0)';
-          } else {
-            card.style.transform = 'translateX(0)';
-          }
         }, index * 200);
       }
     });
