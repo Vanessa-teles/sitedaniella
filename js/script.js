@@ -35,7 +35,7 @@ function verificarRespostas() {
     pergunta5: 'fomos assaltadas', // Substitua pela resposta real
     pergunta6: 'tentando te chupar', // Substitua pela resposta real
     pergunta7: 'macarrão ao molho branco', // Substitua pela resposta real
-    pergunta8: 'quando a vanessa não avisa que chegou', // Substitua pela resposta real
+    pergunta8: 'quando você não avisa que chegou', // Substitua pela resposta real
     pergunta9: '😒', // Substitua pela resposta real
     pergunta10: 'harry potter' // Substitua pela resposta real
   };
