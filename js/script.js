@@ -280,8 +280,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  const videos = document.querySelectorAll('video[autoplay]');
+  // Forçar play em todos os vídeos
+  const videos = document.querySelectorAll('video');
   videos.forEach(video => {
-    video.play().catch(e => console.log('Autoplay prevented:', e));
+    const promise = video.play();
+    if (promise !== undefined) {
+      promise.catch(error => {
+        // Tentar novamente com gesture
+        video.muted = true;
+        video.play();
+      });
+    }
   });
 });
