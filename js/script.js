@@ -24,21 +24,28 @@ function createHearts() {
   }
 }
 
-// Verifica as respostas do quiz
-function verificarRespostas() {
-  // Respostas corretas (personalize com suas respostas)
-  const respostasCorretas = {
-    pergunta1: 'criança',
-    pergunta2: 'no trabalho',
-    pergunta3: 'vanessa',
-    pergunta4: 'as duas',
-    pergunta5: 'fomos assaltadas', // Substitua pela resposta real
-    pergunta6: 'tentando te chupar', // Substitua pela resposta real
-    pergunta7: 'macarrão ao molho branco', // Substitua pela resposta real
-    pergunta8: 'quando você não avisa que chegou', // Substitua pela resposta real
-    pergunta9: '😒', // Substitua pela resposta real
-    pergunta10: 'harry potter' // Substitua pela resposta real
-  };
+document.getElementById('enviarJustificativaBtn').addEventListener('click', function() {
+  const justificativa = document.getElementById('justificativa').value.trim();
+  const feedback = document.getElementById('feedback');
+
+  if (justificativa.length < 10) {
+    feedback.textContent = 'Escreva uma justificativa um pouco maior (mínimo 10 caracteres).';
+    feedback.className = 'error';
+    document.getElementById('justificativa').focus();
+    return;
+  }
+
+  // 👉 Envia pelo WhatsApp
+  const numero = '5511947824018'; // ex: 55 11 999999999
+  const mensagem = encodeURIComponent(`Minha justificativa: ${justificativa}`);
+  window.open(`https://wa.me/${numero}?text=${mensagem}`, '_blank');
+
+  feedback.textContent = 'Obrigada pela justificativa — surpresa desbloqueada! ❤️';
+  feedback.className = 'success';
+  hideJustificationBox();
+  desbloquearSurpresa();
+});
+
 
   const erroElement = document.getElementById('mensagemErro');
   let todasCorretas = true;
@@ -72,7 +79,6 @@ function verificarRespostas() {
       setTimeout(() => input.classList.remove('shake'), 500);
     });
   }
-}
 
 // Inicializa a página
 document.addEventListener('DOMContentLoaded', function() {

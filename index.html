@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz do Nosso Amor 💘</title>
+  <title>Quiz do Nosso termino 😩(pelo meu ponto de vista, claro.)</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -17,72 +17,188 @@
   </div>
 
   <div class="intro-message">
-      <p>Quando eu vi você pela primeira vez com aquela cara de que não queria estar ali num sábado,
-      eu sabia, sabia que iria dar um jeito de conquistar você e uau, eu consegui. Me sinto a pessoa mais sortuda
-      quando estou com você, porque você me faz sentir especial com suas ações, com seus muitos jeitos de me dizer
-      que me ama. Por muito me sinto uma otária tentando colocar em palavras aquilo que você me diz tão bem com os olhos.</p>
+      <p>Hoje eu senti aquela coisa que a gente vivia sentindo uma pela outra, penso que se eu não dizer a palavra talvez eu de fato não sinta aquela coisa que a gente vivia sentindo uma pela outra, mas hoje eu senti e foi horrível não correr e te contar, mas não posso fazer isso pois você tá melhor sem mim e eu acho que eu também, então se algum dia sentir aquilo que a gente vivia sentindo uma pela outra olhe pro céu e saiba que estamos melhor uma sem a outra, mesmo que não pareça</p>
     </div>
 
   <div class="container">
-    <h1>Quiz do Nosso Amor 💖</h1>
+    <h1>Quiz do Nosso termino 😩</h1>
     
-    <div class="intro-message">
-      <p>Antes de ver nossa história especial, vamos testar o quanto você se lembra dos nossos momentos juntas!</p>
-      <p>Responda com carinho cada pergunta para desbloquear a surpresa que preparei com todo meu amor.</p>
+    <!-- HTML -->
+<div class="intro-message">
+  <p>uma única pergunta sim ou não!</p>
+  <p>não era pra você tá aqui, criança e não era pra eu mexer nisso.</p>
+</div>
+
+<form id="quizForm" class="quiz-form" onsubmit="verificarRespostas(event)">
+  <div class="question">
+    <label for="pergunta1">1. você se sentiu amada comigo?</label>
+    <input type="text" id="pergunta1" name="pergunta1" placeholder="Escreva aqui..." autocomplete="off">
+  </div>
+
+  <div class="actions">
+    <button type="submit" id="verificarBtn">Verificar</button>
+  </div>
+
+  <!-- Caixa de justificativa, inicialmente escondida -->
+  <div id="justificationBox" class="hidden" aria-hidden="true">
+    <label for="justificativa">Não bateu? Conte por que sua resposta deve desbloquear:</label>
+    <textarea id="justificativa" rows="4" placeholder="Escreva sua justificativa..."></textarea>
+    <div style="margin-top:8px;">
+      <button type="button" id="enviarJustificativaBtn">Enviar justificativa e desbloquear</button>
+      <button type="button" id="cancelJustBtn">Cancelar</button>
     </div>
-    
-    <div class="quiz-form">
-      <div class="question">
-        <label for="pergunta1">1. Qual é o nosso apelido carinhoso?</label>
-        <input type="text" id="pergunta1" placeholder="Escreva aqui...">
+  </div>
+
+  <div id="feedback" role="status" aria-live="polite" style="margin-top:10px;"></div>
+</form>
+
+<!-- local para mostrar a surpresa -->
+<div id="surpresaContainer"></div>
+
+<!-- CSS mínimo -->
+<style>
+  .hidden { display: none; }
+  #feedback.success { color: green; }
+  #feedback.error { color: #b00020; }
+  #surpresaContainer { margin-top: 16px; }
+</style>
+
+<!-- JS -->
+<script>
+  // Normaliza texto: trim, minusculas e remove acentos
+  function normalizeText(s) {
+    if (!s) return '';
+    return s.trim()
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, ''); // remove diacríticos
+  }
+
+  // Lista de respostas aceitáveis (adicione sinônimos aqui)
+  const acceptedAnswers = ['sim', 'Ss', 'yes',]; // personalize
+
+  // Levenshtein (distância) para checagem fuzzy
+  function levenshtein(a, b) {
+    const al = a.length, bl = b.length;
+    if (al === 0) return bl;
+    if (bl === 0) return al;
+    const dp = Array.from({ length: al + 1 }, () => new Array(bl + 1));
+    for (let i = 0; i <= al; i++) dp[i][0] = i;
+    for (let j = 0; j <= bl; j++) dp[0][j] = j;
+    for (let i = 1; i <= al; i++) {
+      for (let j = 1; j <= bl; j++) {
+        const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        dp[i][j] = Math.min(
+          dp[i-1][j] + 1,
+          dp[i][j-1] + 1,
+          dp[i-1][j-1] + cost
+        );
+      }
+    }
+    return dp[al][bl];
+  }
+
+  function isCorrectAnswer(input) {
+    const ans = normalizeText(input);
+    if (!ans) return false;
+
+    // checagem exata / substring
+    for (const a of acceptedAnswers) {
+      const na = normalizeText(a);
+      if (ans === na || ans.includes(na) || na.includes(ans)) return true;
+    }
+
+    // checagem fuzzy (similaridade)
+    for (const a of acceptedAnswers) {
+      const na = normalizeText(a);
+      const dist = levenshtein(ans, na);
+      const maxLen = Math.max(ans.length, na.length) || 1;
+      const similarity = 1 - (dist / maxLen); // 0..1
+      if (similarity >= 0.6) return true; // ajuste o limiar se quiser ser mais/menos permissivo
+    }
+
+    return false;
+  }
+
+  // Função principal chamada ao enviar o formulário
+  function verificarRespostas(event) {
+    if (event) event.preventDefault();
+    const answer = document.getElementById('pergunta1').value;
+    const feedback = document.getElementById('feedback');
+
+    if (isCorrectAnswer(answer)) {
+      feedback.textContent = 'Resposta aceita ';
+      feedback.className = 'success';
+      desbloquearSurpresa();
+      hideJustificationBox();
+    } else {
+      // mostra caixa de justificativa
+      feedback.textContent = 'Resposta diferente. Por favor, escreva uma justificativa para desbloquear.';
+      feedback.className = 'error';
+      showJustificationBox();
+      document.getElementById('justificativa').focus();
+    }
+  }
+
+  // Mostrar/ocultar justificativa
+  function showJustificationBox() {
+    const box = document.getElementById('justificationBox');
+    box.classList.remove('hidden');
+    box.setAttribute('aria-hidden', 'false');
+  }
+  function hideJustificationBox() {
+    const box = document.getElementById('justificationBox');
+    box.classList.add('hidden');
+    box.setAttribute('aria-hidden', 'true');
+    document.getElementById('justificativa').value = '';
+  }
+
+  // Ao enviar justificativa: valida e desbloqueia
+  document.getElementById('enviarJustificativaBtn').addEventListener('click', function() {
+    const justificativa = document.getElementById('justificativa').value.trim();
+    const feedback = document.getElementById('feedback');
+
+    if (justificativa.length < 10) {
+      feedback.textContent = 'Escreva uma justificativa um pouco maior (mínimo 10 caracteres).';
+      feedback.className = 'error';
+      document.getElementById('justificativa').focus();
+      return;
+    }
+
+    // Se quiser, aqui você pode enviar a justificativa para o servidor para revisão:
+    // fetch('/salva-justificativa', { method:'POST', body: JSON.stringify({ resposta: ..., justificativa }), headers: {...} })
+
+    feedback.textContent = 'Obrigada pela justificativa!';
+    feedback.className = 'success';
+    hideJustificationBox();
+    desbloquearSurpresa();
+  });
+
+  // botão cancelar
+  document.getElementById('cancelJustBtn').addEventListener('click', function() {
+    hideJustificationBox();
+    document.getElementById('feedback').textContent = '';
+  });
+
+  // Exemplo simples de "desbloquear surpresa" (personalize como quiser)
+  function desbloquearSurpresa() {
+    const container = document.getElementById('surpresaContainer');
+    container.innerHTML = `
+      <div id="surpresa" style="border:1px solid #eee; padding:12px; border-radius:8px; background:#fff9f9;">
+        <h2>Parabéns! 🎉</h2>
+        <p>Aqui está !</p>
+        <!-- coloque aqui o que deve aparecer: imagem, link, segundo passo, etc -->
       </div>
+    `;
+    // opcional: rolar até a surpresa
+    container.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
       
-      <div class="question">
-        <label for="pergunta2">2. Onde nos conhecemos?</label>
-        <input type="text" id="pergunta2" placeholder="Escreva aqui...">
-      </div>
       
-      <div class="question">
-        <label for="pergunta3">3. Quem disse "eu te amo" primeiro?</label>
-        <input type="text" id="pergunta3" placeholder="Escreva aqui...">
-      </div>
       
-      <div class="question">
-        <label for="pergunta4">4. Quem é mais carinhosa no dia a dia?</label>
-        <input type="text" id="pergunta4" placeholder="Escreva aqui...">
-      </div>
-      
-      <div class="question">
-        <label for="pergunta5">5. o que aconteceu no nosso primeiro piquenique?</label>
-        <input type="text" id="pergunta5" placeholder="Escreva aqui...">
-      </div>
-      
-      <div class="question">
-        <label for="pergunta6">6. o que eu tava fazendo no piquenique na fatídica hora?</label>
-        <input type="text" id="pergunta6" placeholder="Escreva aqui...">
-      </div>
-      
-      <div class="question">
-        <label for="pergunta7">7. O que eu cozinhei quando você veio à minha casa pela primeira vez?</label>
-        <input type="text" id="pergunta7" placeholder="Escreva aqui...">
-      </div>
-      
-      <div class="question">
-        <label for="pergunta8">8. O que eu sempre faço que te deixa louca?</label>
-        <input type="text" id="pergunta8" placeholder="Escreva aqui...">
-      </div>
-      
-      <div class="question">
-        <label for="pergunta9">9. Qual emoji eu sempre uso?</label>
-        <input type="text" id="pergunta9" placeholder="Escreva aqui...">
-      </div>
-      
-      <div class="question">
-        <label for="pergunta10">10. Complete: Eu te amo mais que...</label>
-        <input type="text" id="pergunta10" placeholder="Escreva aqui...">
-      </div>
-      
-      <button class="quiz-button" onclick="verificarRespostas()">Ver Nossa História 💕</button>
+      <button class="quiz-button" onclick="verificarRespostas()">Só Ver </button>
       <p class="error-message" id="mensagemErro"></p>
     </div>
   </div>
